@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Komalpreet Kaur — Senior ML/AI Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #fafafa;
+      --surface: #ffffff;
+      --border: #e5e7eb;
+      --text: #111827;
+      --muted: #6b7280;
+      --accent: #2563eb;
+      --accent-light: #eff6ff;
+      --tag-bg: #f3f4f6;
+      --tag-text: #374151;
+      --radius: 12px;
+      --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-md: 0 4px 16px rgba(0,0,0,0.07);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      font-size: 15px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(250,250,250,0.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 60px;
+    }
+    .nav-name { font-weight: 600; font-size: 15px; letter-spacing: -0.01em; color: var(--text); text-decoration: none; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--muted); font-size: 14px; font-weight: 500; transition: color .15s; }
+    .nav-links a:hover { color: var(--text); }
+
+    /* ── Layout ── */
+    .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+    section { padding: 80px 0; }
+    section + section { border-top: 1px solid var(--border); }
+
+    /* ── Hero ── */
+    #hero { padding: 100px 0 80px; }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 13px; font-weight: 500; color: var(--accent);
+      background: var(--accent-light); border-radius: 20px;
+      padding: 4px 12px; margin-bottom: 24px;
+    }
+    .hero-eyebrow .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+    h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700; letter-spacing: -0.03em; line-height: 1.1;
+      color: var(--text); margin-bottom: 16px;
+    }
+    .hero-sub {
+      font-size: 1.1rem; color: var(--muted); max-width: 580px;
+      line-height: 1.7; margin-bottom: 36px;
+    }
+    .hero-links { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 20px; border-radius: 8px;
+      font-size: 14px; font-weight: 500; text-decoration: none;
+      transition: all .15s; cursor: pointer; border: none;
+    }
+    .btn-primary { background: var(--text); color: #fff; }
+    .btn-primary:hover { background: #374151; transform: translateY(-1px); }
+    .btn-outline { background: var(--surface); color: var(--text); border: 1.5px solid var(--border); }
+    .btn-outline:hover { border-color: #9ca3af; transform: translateY(-1px); }
+
+    .hero-stats {
+      display: flex; gap: 40px; margin-top: 56px;
+      padding-top: 40px; border-top: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+    .stat-num { font-size: 2rem; font-weight: 700; letter-spacing: -0.03em; color: var(--text); }
+    .stat-label { font-size: 13px; color: var(--muted); margin-top: 2px; }
+
+    /* ── Section headers ── */
+    .section-label {
+      font-size: 12px; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 8px;
+    }
+    h2 {
+      font-size: 1.75rem; font-weight: 700; letter-spacing: -0.02em;
+      margin-bottom: 40px; color: var(--text);
+    }
+
+    /* ── About ── */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+    .about-text p { color: #374151; line-height: 1.75; margin-bottom: 16px; }
+    .about-text p:last-child { margin-bottom: 0; }
+    .about-highlights { display: flex; flex-direction: column; gap: 16px; }
+    .highlight-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 20px;
+      box-shadow: var(--shadow);
+    }
+    .highlight-card .metric {
+      font-size: 1.5rem; font-weight: 700; color: var(--accent); letter-spacing: -0.02em;
+    }
+    .highlight-card .metric-label {
+      font-size: 13px; color: var(--muted); margin-top: 2px;
+    }
+
+    /* ── Experience ── */
+    .exp-list { display: flex; flex-direction: column; gap: 32px; }
+    .exp-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 28px 32px;
+      box-shadow: var(--shadow); position: relative;
+    }
+    .exp-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; margin-bottom: 8px; flex-wrap: wrap; }
+    .exp-role { font-weight: 600; font-size: 16px; color: var(--text); }
+    .exp-company { font-weight: 500; color: var(--accent); font-size: 14px; margin-bottom: 2px; }
+    .exp-date { font-size: 13px; color: var(--muted); white-space: nowrap; }
+    .exp-location { font-size: 13px; color: var(--muted); margin-bottom: 16px; }
+    .exp-stack {
+      display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px;
+    }
+    .tag {
+      background: var(--tag-bg); color: var(--tag-text);
+      border-radius: 6px; padding: 3px 10px;
+      font-size: 12px; font-weight: 500;
+    }
+    .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .exp-bullets li {
+      padding-left: 20px; position: relative;
+      color: #374151; font-size: 14px; line-height: 1.65;
+    }
+    .exp-bullets li::before {
+      content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 12px; top: 2px;
+    }
+    .award-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: #fefce8; color: #854d0e; border: 1px solid #fde68a;
+      border-radius: 6px; padding: 4px 10px; font-size: 12px; font-weight: 500;
+      margin-bottom: 16px;
+    }
+
+    /* ── Projects ── */
+    .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .project-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 24px;
+      box-shadow: var(--shadow);
+      display: flex; flex-direction: column; gap: 12px;
+      text-decoration: none; color: inherit;
+      transition: box-shadow .15s, transform .15s, border-color .15s;
+    }
+    .project-card:hover {
+      box-shadow: var(--shadow-md); transform: translateY(-2px);
+      border-color: #d1d5db;
+    }
+    .project-card-header { display: flex; align-items: center; justify-content: space-between; }
+    .project-icon {
+      width: 36px; height: 36px; border-radius: 8px;
+      background: var(--accent-light); display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+    }
+    .project-link-icon { color: var(--muted); font-size: 16px; }
+    .project-name { font-weight: 600; font-size: 15px; color: var(--text); }
+    .project-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; }
+
+    /* ── Education ── */
+    .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .edu-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 24px 28px;
+      box-shadow: var(--shadow);
+    }
+    .edu-school { font-weight: 600; font-size: 15px; color: var(--text); margin-bottom: 4px; }
+    .edu-degree { font-size: 14px; color: var(--accent); font-weight: 500; margin-bottom: 4px; }
+    .edu-meta { font-size: 13px; color: var(--muted); margin-bottom: 12px; }
+    .edu-courses { font-size: 12.5px; color: #4b5563; line-height: 1.6; }
+    .edu-courses strong { font-weight: 600; color: var(--text); }
+
+    /* ── Skills ── */
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+    .skill-group {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 24px;
+      box-shadow: var(--shadow);
+    }
+    .skill-group-title {
+      font-weight: 600; font-size: 14px; color: var(--text); margin-bottom: 12px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .skill-group-title .icon { font-size: 18px; }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+    /* ── Contact ── */
+    #contact { padding-bottom: 100px; }
+    .contact-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 48px;
+      box-shadow: var(--shadow-md); text-align: center;
+    }
+    .contact-card h2 { margin-bottom: 12px; }
+    .contact-card p { color: var(--muted); margin-bottom: 32px; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .contact-links { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border); padding: 24px 2rem;
+      text-align: center; color: var(--muted); font-size: 13px;
+    }
+
+    /* ── SVG Icons ── */
+    .icon-svg { width: 16px; height: 16px; display: inline-block; vertical-align: middle; }
+
+    /* ── Responsive ── */
+    @media (max-width: 720px) {
+      nav { padding: 0 1.25rem; }
+      .nav-links { gap: 1.2rem; }
+      .container { padding: 0 1.25rem; }
+      section { padding: 56px 0; }
+      .about-grid, .edu-grid, .projects-grid { grid-template-columns: 1fr; }
+      .hero-stats { gap: 24px; }
+      .exp-card { padding: 20px; }
+      .contact-card { padding: 32px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Navigation ── -->
+<nav>
+  <a class="nav-name" href="#hero">Komalpreet Kaur</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ── Hero ── -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-eyebrow">
+      <span class="dot"></span>
+      Senior ML/AI Engineer · Toronto, Canada
+    </div>
+    <h1>Building agentic AI<br/>systems that scale.</h1>
+    <p class="hero-sub">
+      Senior ML/AI Engineer with 9+ years owning the full journey — from raw data pipelines to agentic LLM products serving millions in production. End to end, every time.
+    </p>
+    <div class="hero-links">
+      <a class="btn btn-primary" href="https://linkedin.com/in/komalpreet-kaur2512" target="_blank" rel="noopener">
+        <svg class="icon-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+      <a class="btn btn-outline" href="https://github.com/KomalSandhu25" target="_blank" rel="noopener">
+        <svg class="icon-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        GitHub
+      </a>
+      <a class="btn btn-outline" href="mailto:2277komal@gmail.com">
+        <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+        Email me
+      </a>
+    </div>
+
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">9+</div>
+        <div class="stat-label">Years shipping production ML systems</div>
+      </div>
+      <div>
+        <div class="stat-num">4</div>
+        <div class="stat-label">Companies across Canada, India & the US</div>
+      </div>
+      <div>
+        <div class="stat-num">MS AI</div>
+        <div class="stat-label">Georgia Tech OMSCS — AI Specialization</div>
+      </div>
+      <div>
+        <div class="stat-num">Agentic E2E</div>
+        <div class="stat-label">From raw data to agentic AI — owned end to end, built for millions</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── About ── -->
+<section id="about">
+  <div class="container">
+    <div class="section-label">About</div>
+    <h2>End-to-end ML, from idea to production.</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          I'm a Senior ML/AI Engineer based in Toronto with 9+ years specializing in designing and shipping production-grade ML and LLM systems. My work spans the full AI lifecycle — from feature pipelines and model training to Kubernetes-based serving, observability, and A/B testing.
+        </p>
+        <p>
+          At Ecobee, I built a RAG-enhanced diagnostic assistant powered by Gemini and a multimodal video search pipeline using Vertex AI — both shipped to millions of devices. At Walmart Global Tech, I led ML platform work at scale on Azure and Kubernetes across the global supply chain.
+        </p>
+        <p>
+          I hold an MS in Computer Science (AI specialization) from Georgia Tech's OMSCS program, where I studied reinforcement learning, knowledge-based AI, and deep learning.
+        </p>
+      </div>
+      <div class="about-highlights">
+        <div class="highlight-card">
+          <div class="metric">RAG + LLMs</div>
+          <div class="metric-label">Gemini, Vertex AI, LangChain, Vector Search — shipped to production</div>
+        </div>
+        <div class="highlight-card">
+          <div class="metric">MLOps at scale</div>
+          <div class="metric-label">GCP · Azure · Kubernetes · Terraform · Dataflow · Airflow</div>
+        </div>
+        <div class="highlight-card">
+          <div class="metric">MS AI · Georgia Tech</div>
+          <div class="metric-label">OMSCS — Reinforcement Learning, Deep Learning, Knowledge-Based AI</div>
+        </div>
+        <div class="highlight-card">
+          <div class="metric">🏆 2× Award winner</div>
+          <div class="metric-label">Ecobee Excellence & Tech Award 2025 · Walmart Bravo Award 2022 & 2023</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Experience ── -->
+<section id="experience">
+  <div class="container">
+    <div class="section-label">Experience</div>
+    <h2>Where I've built things.</h2>
+    <div class="exp-list">
+
+      <!-- Ecobee -->
+      <div class="exp-card">
+        <div class="exp-header">
+          <div>
+            <div class="exp-company">Ecobee Technologies</div>
+            <div class="exp-role">Senior Machine Learning Engineer</div>
+          </div>
+          <div class="exp-date">Jul 2024 – Present</div>
+        </div>
+        <div class="exp-location">📍 Toronto, Canada</div>
+        <div class="award-badge">🏆 Excellence & Tech Award 2025 — Best Project &amp; Outstanding Performance</div>
+        <div class="exp-stack">
+          <span class="tag">GCP</span><span class="tag">Vertex AI</span><span class="tag">Gemini</span>
+          <span class="tag">Dataflow</span><span class="tag">Apache Beam</span><span class="tag">Spark</span>
+          <span class="tag">Airflow</span><span class="tag">Kubernetes</span><span class="tag">BigQuery</span>
+          <span class="tag">PyTorch</span><span class="tag">Terraform</span>
+        </div>
+        <ul class="exp-bullets">
+          <li><strong>Multimodal Video Search:</strong> Architected an end-to-end semantic discovery pipeline for doorbell camera footage using Gemini 2.0 (Multimodal) and Vertex AI Vector Search, with a secondary LLM-based "Smart Filter" layer for improved search relevance.</li>
+          <li><strong>RAG Diagnostic Assistant:</strong> Built a production RAG pipeline fine-tuned on device telemetry, weather patterns, and CS transcripts to generate root-cause hypotheses for thermostat anomalies — <strong>reducing support call volume by 7% MoM</strong>.</li>
+          <li><strong>Anomaly Detection Pipeline:</strong> Designed a multi-class XGBoost classification model leveraging telemetry and support logs, <strong>cutting agent diagnostic time by 30%</strong>.</li>
+          <li><strong>Global Thermal Modeling:</strong> Re-architected 8M+ thermostat-specific models into a scalable global model with auto-regressive forecasting on Vertex AI, achieving ~6% average bill savings for customers.</li>
+          <li><strong>Data Lakehouse Platform:</strong> Designed a bronze→silver→gold ingestion platform (GCP/Terraform) with schema-agnostic Dataflow pipelines, improving data quality, lineage, and governance.</li>
+        </ul>
+      </div>
+
+      <!-- Walmart -->
+      <div class="exp-card">
+        <div class="exp-header">
+          <div>
+            <div class="exp-company">Walmart Global Tech</div>
+            <div class="exp-role">Senior Software Engineer, Machine Learning</div>
+          </div>
+          <div class="exp-date">Mar 2021 – Jun 2024</div>
+        </div>
+        <div class="exp-location">📍 Bengaluru, India</div>
+        <div class="award-badge">🏆 Bravo Award 2022 & 2023 — Best Individual Performance</div>
+        <div class="exp-stack">
+          <span class="tag">Azure</span><span class="tag">Java Spring Boot</span><span class="tag">Python</span>
+          <span class="tag">Apache Kafka</span><span class="tag">Kubernetes</span><span class="tag">Spark</span>
+          <span class="tag">Docker</span><span class="tag">PostgreSQL</span>
+        </div>
+        <ul class="exp-bullets">
+          <li><strong>Address Enrichment Model:</strong> Led development of a geolocation-based enrichment model that <strong>reduced last-mile delivery errors by 4%</strong> by predicting accurate drop-off points from sparse address metadata.</li>
+          <li><strong>Omnichannel Growth Engineering:</strong> Architected backend integrations for QR-based in-store tracking and a Temporary Shopping Pass system, driving a <strong>10% boost in CLV</strong> and a <strong>20% uplift in conversion rates</strong>.</li>
+          <li><strong>Regulatory Data Governance:</strong> Designed a high-stakes data management pipeline for Quebec's Law 25 compliance, enabling automated user data access and deletion while preserving downstream ML model integrity.</li>
+        </ul>
+      </div>
+
+      <!-- Ixigo -->
+      <div class="exp-card">
+        <div class="exp-header">
+          <div>
+            <div class="exp-company">Ixigo.com</div>
+            <div class="exp-role">Senior Software Engineer</div>
+          </div>
+          <div class="exp-date">Oct 2019 – Mar 2021</div>
+        </div>
+        <div class="exp-location">📍 Gurugram, India</div>
+        <div class="exp-stack">
+          <span class="tag">AWS</span><span class="tag">Java</span><span class="tag">Spring Boot</span>
+          <span class="tag">Apache Kafka</span><span class="tag">Cassandra</span><span class="tag">MongoDB</span>
+        </div>
+        <ul class="exp-bullets">
+          <li>Built a microservice for ASLAN marketing automation, enabling real-time tracking of campaign types across <strong>5M+ daily active users</strong>.</li>
+          <li>Integrated third-party payment gateways, achieving a <strong>35% reduction in refund processing time</strong>.</li>
+        </ul>
+      </div>
+
+      <!-- InfoEdge -->
+      <div class="exp-card">
+        <div class="exp-header">
+          <div>
+            <div class="exp-company">InfoEdge — Naukri.com</div>
+            <div class="exp-role">Senior Software Engineer</div>
+          </div>
+          <div class="exp-date">Jan 2017 – Sep 2019</div>
+        </div>
+        <div class="exp-location">📍 Noida, India</div>
+        <div class="exp-stack">
+          <span class="tag">Java</span><span class="tag">Spring Boot</span>
+          <span class="tag">Elasticsearch</span><span class="tag">Apache Kafka</span><span class="tag">Spark</span><span class="tag">MySQL</span>
+        </div>
+        <ul class="exp-bullets">
+          <li>Developed an automated system for direct backend job applications on crawled listings, significantly improving user experience at scale.</li>
+          <li>Built central libraries for sanitization and validation, standardizing processes across applications and reducing code redundancy.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── Projects ── -->
+<section id="projects">
+  <div class="container">
+    <div class="section-label">GitHub Projects</div>
+    <h2>Selected work &amp; experiments.</h2>
+    <div class="projects-grid">
+
+      <a class="project-card" href="https://github.com/KomalSandhu25/llm-text-classifier" target="_blank" rel="noopener">
+        <div class="project-card-header">
+          <div class="project-icon">🤖</div>
+          <span class="project-link-icon">↗</span>
+        </div>
+        <div class="project-name">LLM Text Classifier</div>
+        <div class="project-desc">Text classification using large language models — exploring prompting strategies, fine-tuning, and evaluation harnesses for production-grade NLP pipelines.</div>
+        <div class="project-tags">
+          <span class="tag">LLMs</span><span class="tag">NLP</span><span class="tag">Python</span>
+        </div>
+      </a>
+
+      <a class="project-card" href="https://github.com/KomalSandhu25/Reinforcement_learning" target="_blank" rel="noopener">
+        <div class="project-card-header">
+          <div class="project-icon">🎮</div>
+          <span class="project-link-icon">↗</span>
+        </div>
+        <div class="project-name">Reinforcement Learning</div>
+        <div class="project-desc">RL algorithms and experiments from Georgia Tech's OMSCS AI specialization — covering policy optimization, Q-learning, and value-based methods.</div>
+        <div class="project-tags">
+          <span class="tag">Reinforcement Learning</span><span class="tag">OMSCS</span><span class="tag">Python</span>
+        </div>
+      </a>
+
+      <a class="project-card" href="https://github.com/KomalSandhu25/Transformers" target="_blank" rel="noopener">
+        <div class="project-card-header">
+          <div class="project-icon">⚡</div>
+          <span class="project-link-icon">↗</span>
+        </div>
+        <div class="project-name">Transformers</div>
+        <div class="project-desc">Transformer architecture implementations and experiments — self-attention mechanisms, positional encoding, and fine-tuning pre-trained models for downstream tasks.</div>
+        <div class="project-tags">
+          <span class="tag">Transformers</span><span class="tag">PyTorch</span><span class="tag">Deep Learning</span>
+        </div>
+      </a>
+
+      <a class="project-card" href="https://github.com/KomalSandhu25/CNN-visualizations" target="_blank" rel="noopener">
+        <div class="project-card-header">
+          <div class="project-icon">🔍</div>
+          <span class="project-link-icon">↗</span>
+        </div>
+        <div class="project-name">CNN Visualizations</div>
+        <div class="project-desc">Visualizing what convolutional neural networks learn — Grad-CAM, feature maps, and activation maximization to build interpretability into deep vision models.</div>
+        <div class="project-tags">
+          <span class="tag">CNNs</span><span class="tag">Interpretability</span><span class="tag">Computer Vision</span>
+        </div>
+      </a>
+
+      <a class="project-card" href="https://github.com/KomalSandhu25/Seq2Seq" target="_blank" rel="noopener">
+        <div class="project-card-header">
+          <div class="project-icon">🔄</div>
+          <span class="project-link-icon">↗</span>
+        </div>
+        <div class="project-name">Seq2Seq Models</div>
+        <div class="project-desc">Sequence-to-sequence architectures with attention mechanisms — encoder-decoder implementations for translation, summarization, and structured prediction.</div>
+        <div class="project-tags">
+          <span class="tag">Seq2Seq</span><span class="tag">Attention</span><span class="tag">NLP</span>
+        </div>
+      </a>
+
+      <a class="project-card" href="https://github.com/KomalSandhu25/Knowledge-based-AI" target="_blank" rel="noopener">
+        <div class="project-card-header">
+          <div class="project-icon">🧠</div>
+          <span class="project-link-icon">↗</span>
+        </div>
+        <div class="project-name">Knowledge-Based AI</div>
+        <div class="project-desc">Projects from Georgia Tech's KBAI course — constraint satisfaction, planning, semantic networks, and case-based reasoning applied to structured AI problems.</div>
+        <div class="project-tags">
+          <span class="tag">Knowledge Graphs</span><span class="tag">Reasoning</span><span class="tag">OMSCS</span>
+        </div>
+      </a>
+
+    </div>
+    <div style="text-align:center; margin-top: 32px;">
+      <a class="btn btn-outline" href="https://github.com/KomalSandhu25?tab=repositories" target="_blank" rel="noopener">View all repositories ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── Education ── -->
+<section id="education">
+  <div class="container">
+    <div class="section-label">Education</div>
+    <h2>Academic foundation.</h2>
+    <div class="edu-grid">
+      <div class="edu-card">
+        <div class="edu-school">Georgia Institute of Technology</div>
+        <div class="edu-degree">MS Computer Science — AI Specialization (OMSCS)</div>
+        <div class="edu-courses">
+          <strong>Courses:</strong> Machine Learning · Reinforcement Learning · Deep Learning · Knowledge-Based AI · AI Ethics · Human-Computer Interaction · Software Architecture · Algorithms
+        </div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-school">Thapar Institute of Engineering &amp; Technology</div>
+        <div class="edu-degree">BE Computer Science</div>
+        <div class="edu-meta">Top 5% of class</div>
+        <div class="edu-courses">
+          Strong foundation in algorithms, data structures, software engineering, and systems programming.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Skills ── -->
+<section id="skills">
+  <div class="container">
+    <div class="section-label">Skills</div>
+    <h2>Technical toolkit.</h2>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <div class="skill-group-title"><span class="icon">🤖</span> Generative AI &amp; LLMs</div>
+        <div class="skill-tags">
+          <span class="tag">RAG</span><span class="tag">Vector Search</span><span class="tag">LangChain</span>
+          <span class="tag">LlamaIndex</span><span class="tag">Prompt Engineering</span>
+          <span class="tag">Gemini</span><span class="tag">HuggingFace</span>
+          <span class="tag">BERT / GPT</span><span class="tag">Model Distillation</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title"><span class="icon">🧪</span> Modeling &amp; MLOps</div>
+        <div class="skill-tags">
+          <span class="tag">PyTorch</span><span class="tag">TensorFlow</span><span class="tag">Scikit-Learn</span>
+          <span class="tag">XGBoost</span><span class="tag">MLflow</span>
+          <span class="tag">Weights &amp; Biases</span><span class="tag">Feature Stores</span>
+          <span class="tag">A/B Testing</span><span class="tag">Drift Detection</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title"><span class="icon">☁️</span> Infrastructure &amp; Cloud</div>
+        <div class="skill-tags">
+          <span class="tag">GCP</span><span class="tag">Azure</span><span class="tag">Vertex AI</span>
+          <span class="tag">Kubernetes</span><span class="tag">Terraform</span>
+          <span class="tag">Docker</span><span class="tag">Dataflow</span>
+          <span class="tag">Apache Beam</span><span class="tag">Airflow</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title"><span class="icon">🔧</span> Data &amp; Languages</div>
+        <div class="skill-tags">
+          <span class="tag">Python</span><span class="tag">Java</span><span class="tag">SQL</span>
+          <span class="tag">Spark</span><span class="tag">Kafka</span>
+          <span class="tag">BigQuery</span><span class="tag">PostgreSQL</span>
+          <span class="tag">Elasticsearch</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Contact ── -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-card">
+      <div class="section-label" style="margin-bottom:12px;">Contact</div>
+      <h2>Let's work together.</h2>
+      <p>I'm open to Senior ML/AI Engineer opportunities at remote-first companies doing meaningful work. Feel free to reach out!</p>
+      <div class="contact-links">
+        <a class="btn btn-primary" href="mailto:2277komal@gmail.com">
+          <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+          2277komal@gmail.com
+        </a>
+        <a class="btn btn-outline" href="https://linkedin.com/in/komalpreet-kaur2512" target="_blank" rel="noopener">
+          <svg class="icon-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn
+        </a>
+        <a class="btn btn-outline" href="https://github.com/KomalSandhu25" target="_blank" rel="noopener">
+          <svg class="icon-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    Built with HTML &amp; CSS · Komalpreet Kaur · Toronto, Canada
+  </div>
+</footer>
+
+</body>
+</html>
